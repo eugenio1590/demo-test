@@ -54,10 +54,10 @@
 			<groupId>org.jetbrains.kotlin</groupId>
 			<artifactId>kotlin-stdlib-jdk8</artifactId>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -125,6 +125,7 @@
 				<groupId>org.liquibase</groupId>
 				<artifactId>liquibase-maven-plugin</artifactId>
 				<configuration>
+					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
 					<url>${env.JDBC_DATABASE_URL}</url>
 					<diffChangeLogFile>src/main/resources/db/changelog/migrations/changelog-${timestamp}.xml</diffChangeLogFile>
 					<propertyFile>src/main/resources/liquibase/liquibase.properties</propertyFile>
