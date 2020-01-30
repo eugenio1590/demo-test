@@ -1,6 +1,15 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
-    <include file="migrations/changelog-2020-01-29_20-14.xml" relativeToChangelogFile="true" />
-    <include file="migrations/changelog-2020-01-29_22-00.xml" relativeToChangelogFile="true" />
-    <include file="migrations/changelog-2020-01-30_14-43.xml" relativeToChangelogFile="true" />
+    <changeSet author="Eugenio (generated)" id="1580335219380-1">
+        <addColumn tableName="users">
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Eugenio (generated)" id="1580335219380-2">
+        <addColumn tableName="users">
+            <column name="age" type="int4"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>
