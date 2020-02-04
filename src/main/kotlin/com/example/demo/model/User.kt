@@ -8,11 +8,13 @@ import javax.persistence.Id
 import javax.persistence.JoinColumn
 import javax.persistence.JoinTable
 import javax.persistence.ManyToMany
+import javax.validation.constraints.Email
 
 @Entity(name = "users")
 data class User(
 
     @Column(nullable = false)
+    @Email
     var email: String,
 
     @Column(nullable = false)
