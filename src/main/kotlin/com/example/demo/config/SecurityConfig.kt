@@ -3,6 +3,7 @@ package com.example.demo.config
 import com.example.demo.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -26,7 +27,12 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
         http
             .authorizeRequests {
                 it
-                    .antMatchers("/", "/error", "/css/**", "/js/**").permitAll()
+                    .antMatchers(
+                        HttpMethod.GET,
+                        "/", "/index*", "/static/**", "/css/**",
+                        "/*.js", "/*.json", "/*.ico", "/*.png"
+                    )
+                    .permitAll()
                     .anyRequest().authenticated()
             }
             .formLogin {
