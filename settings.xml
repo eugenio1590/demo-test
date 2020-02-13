@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <database.url>jdbc:postgresql://localhost:5432/sunflower-Dev</database.url>
+                <database.username>postgres</database.username>
+                <database.password>postgres</database.password>
+                <database.dialect>org.hibernate.dialect.PostgreSQL92Dialect</database.dialect>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <database.url>jdbc:postgresql://localhost:5432/${env.JDBC_DATABASE}</database.url>
+                <database.username>${env.JDBC_DATABASE_USERNAME}</database.username>
+                <database.password>${env.JDBC_DATABASE_PASSWORD}</database.password>
+            </properties>
+        </profile>
+        <profile>
+            <id>release</id>
+            <properties>
+                <database.url>jdbc:sqlserver://localhost:1433;databaseName=sunflower-Dev</database.url>
+                <database.username>sa</database.username>
+                <database.password>sqlserver</database.password>
+                <database.dialect>org.hibernate.dialect.SQLServer2012Dialect</database.dialect>
+            </properties>
+        </profile>
+    </profiles>
+</settings>

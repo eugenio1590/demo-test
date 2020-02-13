@@ -71,6 +71,11 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>8.2.0.jre11</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -145,7 +150,10 @@
                 <version>3.8.5</version>
 				<configuration>
 					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-					<url>${env.JDBC_DATABASE_URL}</url>
+					<url>${database.url}</url>
+					<username>${database.username}</username>
+					<password>${database.password}</password>
+					<referenceUrl>hibernate:spring:com.example.demo.model?dialect=${database.dialect}&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
 					<diffChangeLogFile>src/main/resources/db/changelog/migrations/changelog-${timestamp}.xml</diffChangeLogFile>
 					<propertyFile>src/main/resources/liquibase/liquibase.properties</propertyFile>
 				</configuration>
