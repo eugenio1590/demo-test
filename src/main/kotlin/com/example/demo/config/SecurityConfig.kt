@@ -30,7 +30,9 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
                     .anyRequest().authenticated()
             }
             .formLogin {
-                it.loginPage("/login").permitAll()
+                it
+                    .loginPage("/login").permitAll()
+                    .defaultSuccessUrl("/dashboard", true)
             }
             .logout {
                 it.permitAll()
