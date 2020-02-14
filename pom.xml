@@ -58,6 +58,11 @@
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
 		</dependency>-->
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+			<version>2.4.1</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -189,6 +194,25 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.gitlab.haynes</groupId>
+				<artifactId>libsass-maven-plugin</artifactId>
+				<version>0.2.22</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<generateSourceMap>false</generateSourceMap>
+					<enableClasspathAwareImporter>true</enableClasspathAwareImporter>
+					<inputPath>${project.basedir}/src/main/resources/static/scss/</inputPath>
+					<outputPath>${project.basedir}/src/main/resources/static/css/</outputPath>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

@@ -1,23 +1,32 @@
-
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main}">
 <head>
     <title>Login page</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" th:href="@{/css/signin.css}" />
 </head>
-<body>
+<body class="text-center">
     <div th:if="${param.error}">
         Invalid username and password.
     </div>
     <div th:if="${param.logout}">
         You have been logged out.
     </div>
-    <form th:action="@{/login}" method="post">
-        <div><label> User Name : <input type="text" name="username"/> </label></div>
-        <div><label> Password: <input type="password" name="password"/> </label></div>
-        <div><input type="submit" value="Sign In"/></div>
+    <form th:action="@{/login}" method="post" class="form-signin">
+        <img class="mb-4" src="https://getbootstrap.com/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <div>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" name="username" id="inputEmail" class="form-control" placeholder="Email address" required autofocus/>
+        </div>
+        <div>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        </div>
+        <div><button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button></div>
+        <p class="mt-5 mb-3 text-muted"><a th:href="@{/}">Back to home page</a></p>
     </form>
-    <p><a th:href="@{/}">Back to home page</a></p>
 </body>
 </html>
